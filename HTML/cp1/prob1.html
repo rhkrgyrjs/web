@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>나의 소개</title>
+        <style>
+            body { background-color : violet; color : green; margin-left : 40px; margin-right : 40px; }
+            h3 { text-align: center; color : darkred; }
+            hr { height : 5px; border : solid grey; background-color : grey; }
+            span { color : darkred; font-size : 20px; }
+        </style>
+        <script>
+            function show()
+            {
+                document.getElementById("pic").src="sample.png";
+            }
+
+            function hide()
+            {
+                document.getElementById("pic").src="";
+            }
+        </script>
+    </head>
+    <body>
+        <h3 onmouseover="show()" onmouseout="hide()">Kovox</h3>
+        <hr>
+        <div> <img id="pic" src=""> </div>
+        저는 대한민국에서 태어나서 컴퓨터 공학을 전공하는 학생입니다. 제가 제일 좋아하는 과목은
+        <span>웹 프로그래밍</span>이고, 그 중에서도 <span>자바스크립트를</span> 제일 좋아합니다.
+    </body>
+</html>
