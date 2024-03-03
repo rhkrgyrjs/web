@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>z-index 프로퍼티</title>
+        <style>
+            div{ position:absolute; }
+            img { position:absolute; }
+            #spadeA{ z-index:-3; left:10px; top:20px; }
+            #spadeB{ z-index:-2; left:40px; top:30px; }
+            #spadeC{ z-index:3; left:80px; top:40px; }
+            #spadeD{ z-index:7; left:120px; top:50px; }
+        </style>
+    </head>
+    <body>
+        <h3>z-index 프로퍼티</h3>
+        <hr>
+        <div>
+            <img id="spadeA" src="sample.png" width="100" height="140" alt="A">
+            <img id="spadeB" src="sample.png" width="100" height="140" alt="B">
+            <img id="spadeC" src="sample.png" width="100" height="140" alt="C">
+            <img id="spadeD" src="sample.png" width="100" height="140" alt="D">
+        </div>
+    </body>
+</html>
