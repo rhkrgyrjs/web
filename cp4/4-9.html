@@ -3,15 +3,41 @@
     <head>
         <title>셀렉터 만들기</title>
         <style>
-            h3, li { color:brown; } /* 태그 이름 셀렉터 */
-            div > div > strong { background:yellow; } /* 자식 셀렉터 */
-            ul strong { color:dodgerblue; } /* 자손 셀렉터 */
-            .warning { color:red; } /* class 셀렉터 */
-            body.main { background:aliceblue; } /* class 셀렉터 */
-            #list { background:mistyrose; } /* id 셀렉터 */
-            #list span { color:forestgreen; } /* 자손 셀렉터 */
-            h3:first-letter { color:red; } /* 가상 클래스 셀렉터 */
-            li:hover { background:yellowgreen; } /* 가상 클래스 셀렉터 */
+            h3, li { color:brown; } 
+            /* 태그 셀렉터 */
+            /* <h3>태그, <li>태그에 적용 */
+
+            div > div > strong { background:yellow; }
+             /* 자식 셀렉터 */
+             /* <div>의 직계 자식인 <div>의 직계 자식인 <strong> 태그에 적용 */
+
+            ul strong { color:dodgerblue; } 
+            /* 자손 셀렉터 */
+            /* <ul> 태그의 자손 관계에 있는 <strong> 태그에 적용 */
+
+            .warning { color:red; } 
+            /* class 셀렉터 */
+            /* class 속성의 값이 warning인 태그에 적용 */
+
+            body.main { background:aliceblue; } 
+            /* 특정 태그의 class 셀렉터 */
+            /* <body> 태그의 속성의 값이 main인 경우에 적용 */
+
+            #list { background:mistyrose; } 
+            /* id 셀렉터 */
+            /* id 속성의 값이 list인 태그에 적용 */
+
+            #list span { color:forestgreen; } 
+            /* id 셀렉터 + 태그 셀렉터 */
+            /* id 속성의 값이 list인 태그의 자손 관계에 있는 <span> 태그에 적용 */
+
+            h3:first-letter { color:red; } 
+            /* 가상 클래스 셀렉터 */
+            /* <h3>태그의 첫 번째 글자에 적용 */
+
+            li:hover { background:yellowgreen; } 
+            /* 가상 클래스 셀렉터 */
+            /* <li>태그의 블록에 마우스가 올라갔을 때(hover) 적용 */
         </style>
     </head>
     <body class="main">
