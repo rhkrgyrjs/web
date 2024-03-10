@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>new Object()로 사용자 객체 만들기</title>
+        <script>
+            // 메소드로 사용할 3개의 함수 작성
+            function inquiry() { return this.balance; }
+            function deposit(money) { this.balance += money; }
+            function withdraw(money)
+            {
+                this.balance -= money;
+                return money;
+            }
+
+            var account = new Object();
+            account.owner = "황기태" // owner 프로퍼티 생성
+            account.code = "111"; // code 프로퍼티 생성
+            account.balance = 35000; // 잔액 프로퍼티 생성
+            account.inquiry = inquiry; // 메소드 할당
+            account.deposit = deposit; // 메소드 할당
+            account.withdraw = withdraw; // 메소드 할당
+        </script>
+    </head>
+    <body>
+        <h3>new Object()로 사용자 객체 만들기</h3>
+        <hr>
+        <script>
+            // 객체 활용
+            document.write("account : ");
+            document.write(account.owner + ", ");
+            document.write(account.code + ", ");
+            document.write(account.balance + "<br>");
+
+            account.deposit(10000); // 10000원 입금
+            document.write("10000원 저금 후 잔액은 " + account.inquiry() + "<br>");
+
+            account.withdraw(5000); // 5000원 인출
+            document.write("5000원 인출 후 잔액은 " + account.inquiry() + "<br>");
+        </script>
+    </body>
+</html>
