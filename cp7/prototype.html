@@ -20,6 +20,8 @@
                     return money;
                 }
             }
+
+            Account.prototype.bankName = "kakaoBank";
         </script>
     </head>
     <body>
@@ -28,6 +30,7 @@
         <script>
             // new 연산자 이용하여 계좌 객체 생성
             var account = new Account("황기태", "111", 35000);
+            var account_chulsu = new Account("김철수", "222", 50000);
 
             document.write("account : ");
             document.write(account.owner + ", ");
@@ -39,6 +42,10 @@
 
             account.withdraw(5000); // 5000원 인출
             document.write("5000원 인출 후 잔액은 " + account.inquiry() + "<br>");
+
+            document.write("account.bankName : " + account.bankName + "<br>");
+            document.write("account_chulsu의 bankName 프로퍼티에 접근해도 값은 동일(상속받았기 때문)<br>");
+            document.write("account_chulsu.bankName : " + account_chulsu.bankName);
         </script>
     </body>
 </html>
