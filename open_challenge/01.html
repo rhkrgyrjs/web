@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>나의 소개</title>
+        <style>
+            /* 태그마다 스타일 지정 */
+            
+            /* 문서 전체의 배경색, 문서의 좌우의 margin 지정 */
+            body
+            {
+                background-color:plum;
+                margin-left:40px;
+                margin-right:40px;
+            }
+
+            /* h3태그(글의 제목)의글자 색과 정렬 지정 */
+            h3
+            {
+                text-align:center;
+                color:blue;
+            }
+
+            /* p태그(paragraph)로 감싼 부분의 글자 색 지정 */
+            p
+            {
+                color:green;
+            }
+
+            /* 가로선의 두께, 테두리의 스타일(실선), 배경색 지정 */
+            hr
+            {
+                height:5px;
+                border:solid grey;
+                background-color:grey;
+            }
+
+            /* span(인라인 요소 그룹화)의 글자색과 크기 지정정 */
+            span
+            {
+                color:brown;
+                font-size:20px
+            }
+        </style>
+
+        <script>
+            // 마우스가 제목에 올라갔을 때 실행될 함수 작성
+            // id 속성이 myPic인 DOM을 받아와 src 속성 수정
+            function myPicMouseOver()
+            {
+                document.getElementById("myPic").src = "../media/sample.png";
+            }
+
+            // 마우스가 제목에서 내려왔을 때 실행될 함수 작성성
+            function myPicMouseOut()
+            {
+                document.getElementById("myPic").src = "";
+            }
+        </script>
+    </head>
+    <body>
+        <!-- 제목의 이벤트 리스너에 실행될 함수 지정 -->
+        <h3 onmouseover="myPicMouseOver()" onmouseout="myPicMouseOut()">곽효건</h3>
+        <hr>
+        <div>
+            <img id="myPic" src="">
+        </div>
+        <p>
+            저는 대한민국에서 태어나서 컴퓨터 공학을 전공하는 학생입니다.
+            제가 제일 좋아하는 과목은 <span>웹 프로그래밍</span>이고,
+            그 중에서도 <span>자바스크립트</span>를 제일 잘합니다.
+        </p>
+    </body>
+</html>

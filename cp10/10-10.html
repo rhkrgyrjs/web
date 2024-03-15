@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>브라우저 정보 출력</title>
+        <style>
+            span { color:red; }
+            div
+            {
+                border-color:yellowgreen;
+                border-style:solid;
+                padding:5px;
+            }
+        </style>
+        <script>
+            function printNavigator()
+            {
+                var text =
+                "<span>appCodeName </span>" + navigator.appCodeName + "<br>" +
+                "<span>appName </span>" + navigator.appName + "<br>" +
+                "<span>appVersion </span>" + navigator.appVersion + "<br>" +
+                "<span>platform </span>" + navigator.platform + "<br>" +
+                "<span>product </span>" + navigator.product + "<br>" +
+                "<span>userAgent </span>" + navigator.userAgent + "<br>" +
+                "<span>vendor </span>" + navigator.vendor + "<br>" +
+                "<span>language </span>" + navigator.language + "<br>" +
+                "<span>onLine </span>" + navigator.onLine + "<br>" +
+                "<span>cookieEnabled </span>" + navigator.cookieEnabled + "<br>" +
+                "<span>javaEnabled() </span>" + navigator.javaEnabled() + "<br>" +
+                "<span>plugins.length </span>" + navigator.plugins.length + "<br>";
+
+                for (var j=0; j<navigator.plugins.length; j++)
+                {
+                    text += "plugins " + j + " : <blockquote>";
+                    text += navigator.plugins[j].name + "<br>";
+                    text += "<i>" + navigator.plugins[j].description + "</i><br>";
+                    text += navigator.plugins[j].filename + "</blockquote>";
+                }
+
+                var div = document.getElementById("div");
+                div.innerHTML = text;
+            }
+        </script>
+    </head>
+    <body onload="printNavigator()">
+        <h3>브라우저에 관한 정보 출력</h3>
+        <hr>
+        <div id="div"></div>
+    </body>
+</html>
