@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>시작과 끝 숫자를 전달받아 합을 구하는 워커 테스크</title>
+    </head>
+    <body>
+        <h3>시작과 끝 숫자를 전달받아 합을 구하는 워커 태스크</h3>
+        <hr>
+        <input id="from" type="text" size="10"> ~
+        <input id="to" type="text" size="10"> = 
+        <input id="sum" type="text" size="10">
+        <br>
+        <button id="add" onclick="send()">add</button>
+        <script>
+            var addWorker = new Worker("add1.js");
+
+            function send()
+            {
+                var parameters =
+                {
+                    from: document.getElementById("from").value,
+                    to: document.getElementById("to").value
+                };
+
+                addWorker.postMessage(parameters);
+
+                addWorker.onmessage =
+                function(e)
+                {
+                    document.getElementById("sum").value = e.data;
+                };
+            }
+        </script>
+    </body>
+</html>

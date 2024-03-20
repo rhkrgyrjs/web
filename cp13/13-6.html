@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>watchPosition()로 반복 위치 서비스</title>
+</head>
+<body>
+    <h3>watchPosition()로 반복 위치 서비스</h3>
+    <hr>
+    <div id="msg">이곳에 위치 정보 출력</div>
+    <div id="map"></div>
+    <script>
+        if (!navigator.geolocation) 
+            alert("지원하지 않음");
+        else 
+        {
+            var options = 
+            {
+                enableHighAccuracy: false,
+                timeout: 5000,
+                maximumAge: 0
+            };
+
+            var count = 0;
+            var watchID = navigator.geolocation.watchPosition(changed, null, options);
+        }
+
+        function changed(position) 
+        {
+            if (count == 5) 
+            {
+                navigator.geolocation.clearWatch(watchID);
+                document.getElementById("msg").innerHTML = "위치 서비스 종료";
+                return;
+            }
+
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            var text = count + ": (위도 " + lat + ", 경도 " + lon + ") 으로 변경됨...";
+            document.getElementById("msg").innerHTML = text;
+
+            // 구글 지도 이미지 생략
+
+            count++;
+        }
+    </script>
+</body>
+</html>
