@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>자바스크립트 코드 위치</title>
+    </head>
+    <body>
+        <h3>마우스를 올려 보세요</h3>
+        <hr>
+        <div id="div">
+            여기에 마우스를 올리면 배경색이 노란색으로 변합니다.
+        </div>
+        <script>
+            var div = document.getElementById("div");
+
+            div.onmouseover = 
+            function()
+            {
+                this.style.backgroundColor = "yellow";
+            };
+
+            div.onmouseout = 
+            function() 
+            {
+                this.style.backgroundColor = "white";
+            };
+        </script>
+    </body>
+</html>

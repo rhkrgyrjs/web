@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>암호를 입력하라!</title>
+    </head>
+    <body>
+        <h3>암호를 입력하라!</h3>
+        <hr>
+        <script>
+            var passcode = "";
+
+            while (true)
+            {
+                passcode = prompt("암호를 대라", "");
+                if (passcode === "you")
+                    break;
+            }
+
+            document.write("통과!");
+        </script>
+    </body>
+</html>
