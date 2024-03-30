@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>book 객체 만들기</title>
+    </head>
+    <body>
+        <h3>book 객체 만들기</h3>
+        <hr>
+        <script>
+            // 프로토타입으로 객체 만들기
+            function book(title, author, price)
+            {
+                this.title = title;
+                this.author = author;
+                this.price = price;
+            }
+
+            var bookAry = new Array();
+
+            for (var i=0; i<5; i++)
+            {
+                var input = prompt("콤마(,)로 분리하면서 책제목,저자,가격 순으로 입력", "").split(",");
+                bookAry[i] = new book(input[0], input[1], input[2]);
+            }
+
+            for (var i=0; i<5; i++)
+                document.write(bookAry[i].title + ", " + bookAry[i].author + ", " + bookAry[i].price + "<br>");
+
+            var mostExpIdx = 0;
+            for (var i=1; i<5; i++)
+                if (bookAry[i].price > bookAry[mostExpIdx].price)
+                    mostExpIdx = i;
+            document.write("가장 가격이 비싼 책은 " + bookAry[mostExpIdx].title);
+        </script>
+    </body>
+</html>

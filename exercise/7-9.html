@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>book 객체 만들기</title>
+    </head>
+    <body>
+        <h3>book 객체 만들기</h3>
+        <hr>
+        <script>
+            // new Object()를 활용해 객체 만들기
+            /*
+            var book = new Object();
+            book.title = "HTML5";
+            book.author = "황기태";
+            book.price = 20000;
+            */
+
+            // 리터럴 표기법으로 객체 만들기
+            /*
+            var book = 
+            {
+                title: "HTML5",
+                author: "황기태",
+                priceL 20000
+            };
+            */
+
+            // 프로토타입으로 객체 만들기
+            function book(title, author, price)
+            {
+                this.title = title;
+                this.author = author;
+                this.price = price;
+            }
+
+            var html5 = new book("HTML5", "황기태", 20000);
+            document.write("book : " + html5.title + ", " + html5.author + ", " + html5.price + "<br>");
+        </script>
+    </body>
+</html>

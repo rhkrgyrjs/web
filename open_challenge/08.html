@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>겜블링 게임</title>
+        <style>
+            table 
+            {
+                border : 1px solid violet;
+                border-collapse : collapse; 
+            }
+
+            td 
+            {
+                width : 50px;
+                height : 50px;
+                padding : 0px;
+                font : italic 50px consolas, sans-serif;
+                color : blue;
+                text-align : center;
+                background : linen;
+            }
+
+            div#msg 
+            {
+                font : italic 18px consolas, sans-serif;
+                color : magenta;
+                margin-top : 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>겜블링 게임</h3>
+        각 숫자를 클릭하면 0에서 2사이의 난수로 바뀝니다.
+        모두 같은 수가 나오면 승리합니다.
+        <hr>
+        <table>
+            <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        </table>
+        <div id="msg"></div>
+        <script>
+            var tds = document.getElementsByTagName("td");
+            for (var i=0; i<tds.length; i++)
+            {
+                tds[i].onclick = roll;
+                tds[i].rolled = false;
+            }
+
+            var msg = document.getElementById("msg");
+            msg.style.visibility = "hidden";
+            msg.onclick = reset;
+
+            function roll()
+            {
+                if (this.rolled == false)
+                {
+                    this.rolled = true;
+                    this.innerHTML = "" + Math.floor(Math.random()*3);
+                    
+                    if (tds[0].rolled == true && tds[1].rolled == true && tds[2].rolled == true)
+                    {
+                        if (tds[0].innerHTML === tds[1].innerHTML && tds[1].innerHTML === tds[2].innerHTML)
+                            msg.innerHTML = "Success(click here to do again)";
+                        else
+                            msg.innerHTML = "fail(click here to do again)";
+                        msg.style.visibility = "visible";
+                    }
+                }
+            }
+
+            function reset()
+            {
+                for (var i=0; i<tds.length; i++)
+                {
+                    tds[i].innerHTML = "0";
+                    tds[i].rolled = false;
+                }
+                msg.style.visibility = "hidden";
+            }
+        </script>
+    </body>
+</html>

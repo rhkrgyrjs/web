@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>16개의 랜덤한 색 만들기</title>
+        <style>
+            div
+            {
+                display: inline-block;
+                width: 150px;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>16개의 랜덤한 색 만들기</h3>
+        <hr>
+        <script>
+            // CSS에서 rgb() 함수를 통한 색상을 지정하는 코드 문자열을 리턴
+            function getRandomColor() 
+            {
+                var randomNumber = new Array();
+                for (var i = 0; i < 3; i++)
+                    randomNumber[i] = Math.floor(Math.random() * 256);
+                return "rgb(" + randomNumber[0] + ", " + randomNumber[1] + ", " + randomNumber[2] + ")";
+            }
+
+            for (var i = 0; i < 16; i++) 
+            {
+                var randomColor = getRandomColor();
+                document.write("<div style='background-color: " + randomColor + "'>" + randomColor + "</div>");
+            }
+        </script>
+    </body>
+</html>
