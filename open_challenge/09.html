@@ -5,20 +5,58 @@
         <style>
             table 
             { 
-                border : 1px solid blue; 
-                border-collapse : collapse; 
+                border: 1px solid blue; 
+                border-collapse: collapse; 
             }
 
             td 
             { 
-                border : 1px solid blue; 
-                width : 50px; 
-                height : 50px;
-                padding : 0px; 
+                border: 1px solid blue; 
+                width: 50px; 
+                height: 50px;
+                padding: 0px; 
             }
         </style>
+        <script>
+            var img = new Image();
+            img.src = "../media/sample.png";
+            img.width = "45";
+            img.height = "45";
+
+            function init() 
+            {
+                var grid = document.getElementById("grid");
+                for (var i = 0; i < 10; i++) 
+                {
+                    var tr = document.createElement("tr");
+                    for (var j = 0; j < 10; j++)
+                    {
+                        var newTd = document.createElement("td")
+                        tr.appendChild(newTd);
+                    }
+                    grid.appendChild(tr);
+                }
+                
+                var tds = document.getElementsByTagName("td");
+                var randIdx = Math.floor(Math.random()*100);
+                tds[randIdx].appendChild(img);
+
+                for (var i=0; i<tds.length; i++)
+                    tds[i].onclick = 
+                    function()
+                    {
+                        if (this.firstChild)
+                        {
+                            var randIdx = Math.floor(Math.random()*100);
+                            tds[randIdx].appendChild(img);
+                        }
+                    };
+            }
+        </script>
     </head>
-    <body>
-        
+    <body onload="init()">
+        <h3>마우스 클릭 연습</h3>
+        <hr>
+        <table id="grid"></table>
     </body>
 </html>
