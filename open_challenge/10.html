@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>눈 내리는 마을</title>
+        <style>
+            body
+            {
+                background-image: url("../media/sample.png");
+                background-size: 100%;
+                background-repeat: no-repeat;
+            }
+
+            div
+            {
+                font-size: 30px;
+                color: white;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            // 브라우저 윈도우의 내부 크기 가져오기
+            var windowWidth = window.innerWidth;
+            var windowHeight = window.innerHeight;
+
+            // 눈 20개 만들기
+            // 눈의 위치는 윈도우 크기 내 랜덤한 위치
+            for (var i=0; i<20; i++)
+            {
+                var snowDiv = document.createElement("div");
+                snowDiv.innerHTML = "*";
+                snowDiv.style.left = Math.floor(Math.random()*windowWidth) + "px";
+                snowDiv.style.top = Math.floor(Math.random()*windowHeight) + "px";
+                document.body.appendChild(snowDiv);
+            }
+
+            // 눈 div들의 배열
+            var snows = document.getElementsByTagName("div");
+            // 주기적으로 눈의 위치를 바꿔주는 setInterval
+            var timer = setInterval("snowFalling()", 50);
+            
+
+            // 눈의 위치를 0~10픽셀씩 아래로, 0~5픽셀씩 양옆으로 흔들리며 떨어지게
+            // 눈이 바닥에 떨어졌을 경우 눈을 다시 맨 위로 올리게
+            function snowFalling()
+            {
+                for (var i=0; i<snows.length; i++)
+                {
+                    snows[i].style.top = parseInt(snows[i].style.top.slice(0, -2))+(Math.floor(Math.random()*10)) + "px";
+                    if (Math.random() < 0.5)
+                        snows[i].style.left = parseInt(snows[i].style.left.slice(0, -2))+(Math.floor(Math.random()*5)) + "px";
+                    else
+                        snows[i].style.left = parseInt(snows[i].style.left.slice(0, -2))-(Math.floor(Math.random()*5)) + "px";
+                    
+                    if (parseInt(snows[i].style.top.slice(0,-2)) >= windowHeight-50)
+                    {
+                        snows[i].style.top = "0px";
+                        snows[i].style.left = Math.floor(Math.random()*windowWidth) + "px";
+                    }
+                }
+            }
+
+        </script>
+    </body>
+</html>
