@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>9-9</title>
+        <style>
+            div#popup
+            {
+                border: 1px solid green;
+                background-color: aliceblue;
+                position: absolute;
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>아이템에 마우스를 올리면 설명 출력</h3>
+        <hr>
+        <p>여름 방학 때 하고 싶은 것들</p>
+        <ul>
+            <li>자전거로 대한민국 일주</li>
+            <li>책 100권 읽기</li>
+            <li>철인 3종 경기 준비</li>
+            <li>자바스크립트 정복</li>
+        </ul>
+        <div id="popup">빨간 자전거를 타고 서울, 대전, 대구, 부산 찍고 목포, 인천을 향해 달린다</div>
+        <script>
+            var li1 = document.getElementsByTagName("li")[0];
+            var popup = document.getElementById("popup");
+
+            li1.onmouseover = 
+            function(e)
+            {
+                popup.style.left = e.clientX + "px";
+                popup.style.top = e.clientY + "px";
+                popup.style.visibility = "visible";
+            };
+
+            li1.onmouseout =
+            function(e)
+            {
+                popup.style.visibility = "hidden";
+            };
+        </script>
+    </body>
+</html>

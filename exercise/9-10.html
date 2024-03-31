@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>계산기</title>
+    <style>
+        button {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h3>계산기 만들기</h3>
+    <hr>
+    <input type="text" id="output" style="width: 400px;" value="0">
+    <br>
+    <table style="border-spacing: 10px;">
+        <tr>
+            <td><button>BACK</button></td>
+            <td><button>CE</button></td>
+            <td><button>C</button></td>
+            <td><button>=</button></td>
+        </tr>
+        <tr>
+            <td><button>7</button></td>
+            <td><button>8</button></td>
+            <td><button>9</button></td>
+            <td><button>/</button></td>
+        </tr>
+        <tr>
+            <td><button>4</button></td>
+            <td><button>5</button></td>
+            <td><button>6</button></td>
+            <td><button>*</button></td>
+        </tr>
+        <tr>
+            <td><button>1</button></td>
+            <td><button>2</button></td>
+            <td><button>3</button></td>
+            <td><button>-</button></td>
+        </tr>
+        <tr>
+            <td><button>0</button></td>
+            <td><button>+</button></td>
+            <td><button>NONE</button></td>
+            <td><button>NONE</button></td>
+        </tr>
+    </table>
+    <script>
+        window.onclick = function(e) 
+        {
+            if (e.target.tagName == "BUTTON") 
+            {
+            var output = document.getElementById("output").value;
+                if (output === "0")
+                    output = "";
+                switch(e.target.innerHTML) 
+                {
+                    case "0":
+                    case "1":
+                    case "2":
+                    case "3":
+                    case "4":
+                    case "5":
+                    case "6":
+                    case "7":
+                    case "8":
+                    case "9":
+                    case "+":
+                    case "-":
+                    case "*":
+                    case "/":
+                        output += e.target.innerHTML;
+                        break;
+
+                    case "BACK":
+                        output = output.slice(0, -1);
+                        break;
+
+                    case "CE":
+                    case "C":
+                        output = "0";
+                        break;
+
+                    case "=":
+                        output = eval(output);
+                        break;
+
+                    case "NONE":
+                        break;
+                }
+                document.getElementById("output").value = output;
+            }
+        };
+    </script>
+</body>
+</html>

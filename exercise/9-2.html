@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>9-2</title>
+    </head>
+    <body>
+        <h3>라디오 버튼을 클릭하면 이미지를 출력합니다.</h3>
+        <hr>
+        <input type="radio" name="pic" value="1">사과
+        <input type="radio" name="pic" value="2">바나나
+        <input type="radio" name="pic" value="3">캐릭터
+        <br>
+        <img id="picture">
+        <script>
+            var found = null;
+            var radioAry = document.getElementsByName("pic");
+            var picture = document.getElementById("picture");
+
+            for (var i=0; i<radioAry.length; i++)
+                radioAry[i].onchange = radioPic;
+
+            function radioPic()
+            {
+                for (var i=0; i<radioAry.length; i++)
+                {
+                    if (radioAry[i].checked == true)
+                        found = radioAry[i];
+                }
+                switch (found.value)
+                {
+                    case "1":
+                        picture.src = "../media/apple.jpg";
+                        break;
+                    case "2":
+                        picture.src = "../media/banana.jpg";
+                        break;
+                    case "3":
+                        picture.src = "../media/sample.png";
+                }
+            }
+        </script>
+    </body>
+</html>

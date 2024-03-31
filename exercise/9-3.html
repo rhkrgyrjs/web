@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>계산기</title>
+    </head>
+    <body>
+        <h3>계산기 만들기</h3>
+        <hr>
+        수식을 입력하고 &lt;Enter&gt;를 입력하세요.
+        <br>
+        식:<input type="text" id="exp">
+        <br>
+        값:<input type="text" id="res">
+        <script>
+            var exp = document.getElementById("exp");
+            var res = document.getElementById("res");
+
+            exp.onkeydown = 
+            function(e)
+            {
+                if (e.key == "Enter")
+                    res.value = eval(exp.value);
+            };
+        </script>
+    </body>
+</html>
