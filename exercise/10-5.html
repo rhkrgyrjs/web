@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>시계</title>
+        <style>
+            div
+            {
+                display: inline-block;
+                width: 7em;
+                border: 1px solid gray;
+                background-color: aliceblue;
+            }
+        </style>
+    </head>
+    <body onload="init()">
+        <h3>div 태그에 시계 만들기</h3>
+        <hr>
+        <div id="clock">
+        </div>
+    </body>
+    <script>
+        function init()
+        {
+            timer(document.getElementById("clock"));
+        }
+
+        function timer(obj)
+        {
+            var curTime = new Date();
+            obj.innerHTML = "" + 
+            (curTime.getHours()>12 ? "오후 " + curTime.getHours()-12 : "오전 " + curTime.getHours() ) +
+            " : " + curTime.getMinutes() + " : " + curTime.getSeconds();
+            setTimeout("timer(document.getElementById('clock'))", 1000);
+        }
+    </script>
+</html>
