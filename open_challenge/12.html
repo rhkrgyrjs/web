@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>단어장 만들기</title>
+    </head>
+    <body>
+        <h3>단어장 만들기</h3>
+        <hr>
+        영어 <input type="text" id="eng">
+        <br>
+        한글 <input type="text" id="kor">
+        <br>
+        <button id="save">단어 저장</button>
+        <button id="search">영단어 검색</button>
+        <button id="delete">단어 삭제</button>
+        <button id="all">전체 보기</button>
+        <script>
+            document.getElementById("save").onclick = saveWord;
+            document.getElementById("search").onclick = searchWord;
+            document.getElementById("delete").onclick = deleteWord;
+            document.getElementById("all").onclick = viewAllWord;
+
+            function saveWord()
+            {
+                var eng = document.getElementById("eng").value;
+                var kor = document.getElementById("kor").value;
+                if (localStorage.getItem(eng) != null)
+                {
+                    if (confirm(eng + " 가 이미 있습니다. 수정하시겠습니까?"))
+                        localStorage.setItem(eng, kor);
+                }
+                else
+                    localStorage.setItem(eng, kor);
+            }
+
+            function searchWord()
+            {
+                var eng = document.getElementById("eng").value;
+
+                if (localStorage.getItem(eng) == null)
+                    alert(eng + " 는 단어장에 없습니다.");
+                else
+                    document.getElementById("kor").value = localStorage.getItem(eng);
+            }
+
+            function deleteWord()
+            {
+                var eng = document.getElementById("eng").value;
+                
+                if (localStorage.getItem(eng) == null)
+                    alert(eng + " 는 단어장에 없습니다.");
+                else
+                {
+                    localStorage.removeItem(eng);
+                    alert("단어 " + eng +"는 단어장에서 삭제되었습니다.");
+                }
+            }
+
+            function viewAllWord()
+            {
+                var words = window.open("", "나의 단어장", "width=300, height=500");
+                words.document.write("<h3>나의 단어장 모두 출력<h3>");
+                words.document.write("<hr>");
+                words.document.write("<table style='background-color: aliceblue;'>");
+                for (var i=0; i<localStorage.length; i++)
+                {
+                    words.document.write("<tr>");
+                    words.document.write("<td style='border: 1px solid yellowgreen;'>" + i+1 + "</td>");
+                    words.document.write("<td style='font-weight: bold;'>" + localStorage.key(i) + "</td>");
+                    words.document.write("<td>" + localStorage.getItem(localStorage.key(i)) +"</td>");
+                    words.document.write("</tr>");
+                }
+                words.document.write("</table>");
+            }
+        </script>
+    </body>
+</html>

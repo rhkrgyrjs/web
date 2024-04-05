@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>여행을 갑시다</title>
+    </head>
+    <body>
+        <h3>여행 갑시다</h3>
+        <hr>
+        <div style="border: 1px solid yellowgreen; display: inline-block; padding: 20px;">
+            도시를 선택하세요<br>
+            <select id="city">
+                <option>파리</option>
+                <option>뉴욕</option>
+                <option>런던</option>
+            </select>
+        </div>
+        <div style="border: 1px solid yellowgreen; display: inline-block; padding: 20px;">
+            음식을 선택하세요<br>
+            <select id="food">
+                <option>햄버거</option>
+                <option>에스프레소 커피</option>
+                <option>치즈 케잌</option>
+            </select>
+        </div>
+        <script>
+            document.getElementById("city").onchange = 
+            function()
+            {
+                localStorage.setItem('city', document.getElementById("city").options[document.getElementById("city").selectedIndex].innerHTML);
+            };
+
+            document.getElementById("food").onchange = 
+            function()
+            {
+                localStorage.setItem('food', document.getElementById("food").options[document.getElementById("food").selectedIndex].innerHTML);
+            };
+        </script>
+    </body>
+</html>

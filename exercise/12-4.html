@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>일기 쓰기</title>
+    </head>
+    <body>
+        <h3>일기 쓰기</h3>
+        <hr>
+        오늘 <div id="date"></div>
+        <br>
+        <textarea id="note" rows="15" cols="100"></textarea>
+        <br>
+        <button id="save">저장</button>
+        <button id="show">보기</button>
+        <script>
+            var curDate = new Date();
+            document.getElementById("date").innerHTML = "" + curDate.getFullYear() + "." + (curDate.getMonth()+1) + "." + curDate.getDate();
+            document.getElementById("save").onclick = 
+            function()
+            {
+                localStorage.setItem(document.getElementById("date").innerHTML, document.getElementById("note").value);
+            };
+
+            document.getElementById("show").onclick = 
+            function()
+            {
+                var memos = window.open("", "일기 보기", "width=700, height=500");
+                memos.document.write("<h3>일기 보기</h3><hr>");
+                memos.document.write("<table style='background-color: aliceblue;'>");
+                for (var i=0; i<localStorage.length; i++)
+                {
+                    memos.document.write("<tr>");
+                    memos.document.write("<td style='border: 1px solid yellowgreen;'>" + i+1 + "</td>");
+                    memos.document.write("<td style='font-weight: bold;'>" + localStorage.key(i) + "</td>");
+                    memos.document.write("<td>" + localStorage.getItem(localStorage.key(i)) +"</td>");
+                    memos.document.write("</tr>");
+                }
+                memos.document.write("</table>");
+            };
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>선택한 도시와 음식 보여주기</title>
+    </head>
+    <body>
+        <h3>선택한 도시와 음식 보여주기</h3>
+        <hr>
+        <div style="border: 1px solid yellowgreen;">
+        </div>
+        <script>
+            window.addEventListener("storage", 
+            function() 
+            {
+                document.getElementsByTagName("div")[0].innerHTML = 
+                "city = " + localStorage.getItem("city") + "<br>" +
+                "food = " + localStorage.getItem("food");
+            });
+
+        </script>
+    </body>
+</html>

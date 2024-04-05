@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>산수</title>
+</head>
+<body>
+    <h3>산수 문제를 풀어 봅시다</h3>
+    수식을 계산하여 답을 입력하고 채점 버튼을 누르세요.
+    <hr>
+    <table>
+    </table>
+    <p>남은 시간 : 10</p>
+    <script>
+        var table = document.getElementsByTagName("table")[0];
+
+        var probs = new Array();
+        probs[0] = "5*6";
+        probs[1] = "7+5*3";
+        probs[2] = "23*2";
+        probs[3] = "35-7";
+
+        for (var i=0; i<probs.length; i++)
+        {
+            var tr = document.createElement("tr");
+            var tdProb = document.createElement("td");
+            var tdAns = document.createElement("td");
+            var input = document.createElement("input");
+            input.type = "text";
+            tdProb.className = "problem";
+            input.className = "answer";
+            tdProb.innerHTML = probs[i];
+            tdAns.appendChild(input);
+            tr.appendChild(tdProb);
+            tr.appendChild(tdAns);
+            table.appendChild(tr);
+        }
+        
+        var ansTr = document.createElement("tr");
+        var checkTd = document.createElement("td");
+        var scoreTd = document.createElement("td");
+        var resetTd = document.createElement("td");
+        var checkButton = document.createElement("button");
+        var resetButton = document.createElement("button");
+
+        checkButton.innerHTML = "채점";
+        resetButton.innerHTML = "다시";
+        scoreTd.innerHTML = "0";
+        scoreTd.style.textAlign = "center";
+
+        checkTd.appendChild(checkButton);
+        resetTd.appendChild(resetButton);
+
+        ansTr.appendChild(checkTd);
+        ansTr.appendChild(scoreTd);
+        ansTr.appendChild(resetTd);
+        table.appendChild(ansTr);
+
+        checkButton.onclick = check;
+        resetButton.onclick = reset;
+        resetButton.disabled = true;
+
+        var time = 10;
+        var timerInterval = setInterval(timer, 1000);
+        function timer() 
+        {
+            var p = document.getElementsByTagName("p")[0];
+            p.innerHTML = "남은 시간 : " + time;
+
+            if (time === 0) 
+            {
+                p.innerHTML = "시간 초과!";
+                check();
+                clearInterval(timerInterval);
+            }
+
+            time--;
+        }
+        
+        function check() 
+        {
+            var problems = document.getElementsByClassName("problem");
+            var answer = document.getElementsByClassName("answer");
+            var score = 0;
+            clearInterval(timerInterval);
+
+            for (var i=0; i<problems.length; i++)
+            {
+                if (eval(problems[i].innerHTML) == answer[i].value)
+                {
+                    problems[i].style.textDecoration = 'none';
+                    score++;
+                }
+                else
+                    problems[i].style.textDecoration = 'line-through';
+                answer[i].disabled = true;
+                checkButton.disabled = true;
+                resetButton.disabled = false;
+            }
+            scoreTd.innerHTML = "" + score;
+        }
+
+        function reset()
+        {
+            var problems = document.getElementsByClassName("problem");
+            var answer = document.getElementsByClassName("answer");
+            timerInterval = setInterval(timer, 1000);
+            time = 10;
+
+            for (var i=0; i<problems.length; i++)
+            {
+                var newProb = "" + Math.floor(Math.random()*20);
+                switch(Math.floor(Math.random()*4)+1)
+                {
+                    case 1:
+                        newProb += "+";
+                        break;
+                    case 2:
+                        newProb += "-";
+                        break;
+                    case 3:
+                        newProb += "*";
+                        break;
+                    case 4:
+                        newProb += "/";
+                        break;
+                }
+                newProb += Math.floor(Math.random()*20);
+                problems[i].innerHTML = newProb;
+                problems[i].style.textDecoration = "none";
+                answer[i].value = "";
+                answer[i].disabled = false;
+            }
+            checkButton.disabled = false;
+            resetButton.disabled = true;
+            scoreTd.innerHTML = "0";
+        }
+
+    </script>
+</body>
+</html>

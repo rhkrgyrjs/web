@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>이름으로 학번 검색</title>
+    </head>
+    <body>
+        <h3>이름으로 학번 검색</h3>
+        <hr>
+        이름 <input type="text" id="name">
+        <br>
+        학번 <input type="text" id="num">
+        <button id="search">스토리지에서 검색</button>
+        <br>
+        <a href="12-1_save.html" target="_self">이름과 학번 저장 페이지로</a>
+        <script>
+            document.getElementById("search").onclick = 
+            function()
+            {
+                document.getElementById("num").value = localStorage.getItem(document.getElementById("name").value);
+            };
+        </script>
+    </body>
+</html>

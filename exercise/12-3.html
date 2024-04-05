@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>포스트잇</title>
+    </head>
+    <body>
+        <h3>포스트잇</h3>
+        <hr>
+        <div style="font-size: 1.5em">
+            제목 <input type="text" id="title">
+            <br>
+            메모입력<br>
+            <textarea id="memo" rows="7" cols="50"></textarea>
+        </div>
+        <button id="save">저장</button>
+        <button id="show">보기</button>
+        <script>
+            document.getElementById("save").onclick = 
+            function()
+            {
+                localStorage.setItem(document.getElementById("title").value, document.getElementById("memo").value);
+            };
+
+            document.getElementById("show").onclick = 
+            function()
+            {
+                var memos = window.open("", "포스트잇 출력", "width=700, height=500");
+                memos.document.write("<h3>포스트잇 출력</h3><hr>");
+                memos.document.write("<table style='background-color: aliceblue;'>");
+                for (var i=0; i<localStorage.length; i++)
+                {
+                    memos.document.write("<tr>");
+                    memos.document.write("<td style='border: 1px solid yellowgreen;'>" + i+1 + "</td>");
+                    memos.document.write("<td style='font-weight: bold;'>" + localStorage.key(i) + "</td>");
+                    memos.document.write("<td>" + localStorage.getItem(localStorage.key(i)) +"</td>");
+                    memos.document.write("</tr>");
+                }
+                memos.document.write("</table>");
+            };
+        </script>
+    </body>
+</html>
