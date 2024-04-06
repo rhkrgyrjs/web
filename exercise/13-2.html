@@ -1,0 +1,65 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <title>오디오 재생</title>
+    </head>
+    <body>
+        <h3>오디오 재생</h3>
+        <hr>
+        <audio id="player" src="" controls>
+            브라우저가 오디오 재생을 지원하지 않습니다.
+        </audio>
+        <br>
+        <table id="playlist">
+            <tr>
+                <td style='border: 1px solid yellowgreen;'>1</td>
+                <td id="cat">cat</td>
+                <td><button id="playCat">재생</button></td>
+                <td><button id="pauseCat">중지</button></td>
+            </tr>
+            <tr>
+                <td style='border: 1px solid yellowgreen;'>2</td>
+                <td id="tale">A Tale Of 2 Citiez</td>
+                <td><button id="playTale">재생</button></td>
+                <td><button id="pauseTale">중지</button></td>
+            </tr>
+        </table>
+        <script>
+            var player = document.getElementById("player");
+
+            document.getElementById("playCat").onclick = 
+            function()
+            {
+                player.src = "../media/cat.mp3";
+                player.load();
+                player.play();
+                document.getElementById("cat").style.fontWeight = "bold";
+                document.getElementById("tale").style.fontWeight = "normal";
+            };
+
+            document.getElementById("pauseCat").onclick = 
+            function()
+            {
+                document.getElementById("cat").style.fontWeight = "normal";
+                player.pause();
+            };
+
+            document.getElementById("playTale").onclick = 
+            function()
+            {
+                player.src = "../media/A Tale Of 2 Citiez.mp3";
+                player.load();
+                player.play();
+                document.getElementById("cat").style.fontWeight = "normal";
+                document.getElementById("tale").style.fontWeight = "bold";
+            };
+            
+            document.getElementById("pauseTale").onclick = 
+            function()
+            {
+                document.getElementById("tale").style.fontWeight = "normal";
+                player.pause();
+            };
+        </script>
+    </body>
+</html>

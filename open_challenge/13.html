@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>플레이리스트</title>
+    </head>
+    <body>
+        <h3>오디오 리스트 연속 재생</h3>
+        <hr>
+        처음 play 버튼을 누르면 리스트에 있는 곡이 연속하여 자동재생 됩니다.
+        마우스로 다른 곡을 선택하면 곡이 바뀝니다.
+        next 버튼을 누르면 다음 곡으로 넘어갑니다.
+        <hr>
+        <audio id="player" src="" controls>
+            브라우저가 오디오 재생을 지원하지 않습니다.
+        </audio>
+        <br>
+        <select id="list" size="2">
+            <option value="../media/cat.mp3">cat</option>
+            <option value="../media/A Tale Of 2 Citiez.mp3">A Tale Of 2 Citiez</option>
+        </select>
+        <button id="play">play</button>
+        <button id="next">next</button>
+        <br>
+        <p id="songTitle">현재 연주되는 곡명이 보입니다.</p>
+        <script>
+            var player = document.getElementById("player");
+            var list = document.getElementById("list");
+            var play = document.getElementById("play");
+            var next = document.getElementById("next");
+            var songTitle = document.getElementById("songTitle");
+
+            // 재생 버튼
+            play.onclick = 
+            function()
+            {
+                player.play();
+                songTitle.innerHTML = "현재 " + player.src + "를 재생 중입니다...";
+            };
+
+            // 다음 곡 버튼
+            next.onclick = playNextSong;
+
+            // 곡 재생이 끝났을 때
+            player.onended = playNextSong;
+
+            // 리스트에서 곡이 선택되었을 때
+            list.onchange = 
+            function()
+            {
+              
+                player.src = list.options[list.selectedIndex].value;
+                player.load();  
+            };
+
+            
+            function playNextSong()
+            {
+                if (list.selectedIndex == list.length-1)
+                {
+                    list.selectedIndex = 0;
+                    player.src = list.options[0].value;
+                }
+                else
+                {
+                    list.selectedIndex++;
+                    player.src = list.options[list.selectedIndex].value;
+                }
+                player.load();
+                player.play();
+                songTitle.innerHTML = "현재 " + player.src + "를 재생 중입니다...";
+            };
+        </script>
+    </body>
+</html>

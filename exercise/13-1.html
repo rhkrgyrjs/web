@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>자바스크립트로 비디오 제어</title>
+    </head>
+    <body>
+        <h3>자바스크립트로 비디오 제어</h3>
+        <hr>
+        <video id="cat" src="../media/cat.mp4" width="200" height="500">
+            브라우저가 비디오 재생을 지원하지 않습니다.
+        </video>
+        <br>
+        <button id="play">play</button>
+        <button id="pause">pause</button>
+        <button id="replay">replay</button>
+        <button id="vol-">vol-</button>
+        <button id="vol+">vol+</button>
+        <button id="mute">mute on/off</button>
+        <script>
+            var cat = document.getElementById("cat");
+
+            document.getElementById("play").onclick =
+            function ()
+            {
+                cat.play();
+            };
+
+            document.getElementById("pause").onclick = 
+            function()
+            {
+                cat.pause();
+            };
+
+            document.getElementById("replay").onclick = 
+            function()
+            {
+                cat.load();
+                cat.play();
+            };
+
+            document.getElementById("vol-").onclick = 
+            function()
+            {
+                cat.volume -= 0.1;
+            };
+
+            document.getElementById("vol+").onclick = 
+            function()
+            {
+                cat.volume += 0.1;
+            };
+
+            document.getElementById("mute").onclick = 
+            function()
+            {
+                cat.muted = !cat.muted;
+            }
+        </script>
+    </body>
+</html>

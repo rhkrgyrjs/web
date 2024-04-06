@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>오디오 재생</title>
+    </head>
+    <body>
+        <h3>오디오 재생</h3>
+        듣고 싶은 곡을 선택하고 시작 버튼을 누르면 자동으로 재생됩니다.
+        <hr>
+        <audio id="player" src="" controls>
+            브라우저가 오디오 재생을 지원하지 않습니다.
+        </audio>
+        <br>
+        <input type="checkbox" value="../media/cat.mp3"> 고양이<br>
+        <input type="checkbox" value="../media/A Tale Of 2 Citiez.mp3">A Tale of 2 Citiez<br>
+        <button id="start">연주 시작</button>
+        <script>
+            var player = document.getElementById("player");
+            var playlist = [];
+
+            player.onended = function() 
+            {
+                curPlayingIndex++;
+                if (curPlayingIndex < playlist.length) 
+                {
+                    player.src = playlist[curPlayingIndex];
+                    player.play();
+                }
+            };
+
+            document.getElementById("start").onclick = function() 
+            {
+                playlist = [];
+                curPlayingIndex = 0;
+                var checked = document.getElementsByTagName("input");
+                for (var i = 0; i < checked.length; i++) 
+                {
+                    if (checked[i].checked)
+                        playlist.push(checked[i].value);
+                }
+                if (playlist.length > 0) 
+                {
+                    player.src = playlist[0];
+                    player.play();
+                }
+            };
+        </script>
+    </body>
+</html>

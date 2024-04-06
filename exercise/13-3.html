@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>리플레이</title>
+    </head>
+    <body>
+        <h3>노래재생</h3>
+        <hr>
+        <audio id="player" src="../media/A Tale Of 2 Citiez.mp3" controls>
+            브라우저가 오디오 재생을 지원하지 않습니다.
+        </audio>
+        <script>
+            document.getElementById("player").onended = 
+            function()
+            {
+                if(confirm("다시 재생할까요?"))
+                {
+                    document.getElementById("player").load();
+                    document.getElementById("player").play();
+                }
+            };
+        </script>
+    </body>
+</html>

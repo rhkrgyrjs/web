@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>워커 태스크 곱셈</title>
+    </head>
+    <body>
+        <h3>곱셈하기</h3>
+        <hr>
+        <input type="text" id="one">
+        X
+        <input type="text" id="two">
+        <button id="mul">곱하기</button>
+        <input type="text" id="res">
+        <script>
+            var worker = new Worker('mul.js');
+
+            document.getElementById("mul").onclick = 
+            function()
+            {
+                worker.postMessage({one: document.getElementById("one").value, two: document.getElementById("two").value});                
+            };
+
+            worker.onmessage = 
+            function(e)
+            {
+                document.getElementById("res").value = e.data;
+            };
+        </script>
+    </body>
+</html>

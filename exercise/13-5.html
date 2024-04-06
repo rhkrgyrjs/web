@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>학점 매기기</title>
+    </head>
+    <body>
+        <h3>학점 매기기</h3>
+        <hr>
+        <button id="inputScore">점수 입력</button>
+        <div id="scores">
+
+        </div>
+        <script>
+            document.getElementById("inputScore").onclick = 
+            function()
+            {
+                var score = prompt("점수를 숫자로 입력하세요", "");
+                newTask.postMessage(score);
+            };
+
+            var newTask = new Worker('score.js');
+            newTask.onmessage = 
+            function(e)
+            {
+                var grade = e.data.grade;
+                var score = e.data.score;
+                var p = document.createElement("p");
+                p.innerHTML = "" + score + " = " + grade;
+                document.getElementById("scores").appendChild(p);
+            };
+        </script>
+    </body>
+</html>
